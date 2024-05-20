@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+ <style>
+    .highlight {
+      background-color: rgb(11, 181, 248);
+    }
+   .h3 {
+  background-image: url('c:\Users\Sana\Downloads\5cc8070d65b6d532c4b0c3bbf8662714 (1).jpg');
+} 
+   .footer{
+    text-align: center;
+    color: antiquewhite;
+    position: fixed;
+    bottom: auto;
+   } /* CSS styles for social media icons */
+   .container-fluid{
+    background-image: url('Snapchat-534671747.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+   }
+  
+  .darkerheading{
+    font-weight: bolder;
+    color: black;
+    margin-right: 810px;
+    margin-top: 80px;
+    font-style: italic; 
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+
+ }
+    .paragraph{
+        font-family: 'Times New Roman', Times, serif;
+        margin-right: 810px;
+        margin-top: 10px;
+        font-size: 20px;
+        color: black;
+        white-space: nowrap;
+    }
+    .getintouch{
+        color: black;
+        margin-right: 810px;
+        margin-top: 10px;
+        background-color: rgb(189, 189, 189);
+    }
+   
+        #typing-animation {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 24px; /* Adjust font size as needed */
+            position: relative;
+        }
+        #typing-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+    .socialicons{
+        text-align: center;
+    }
+ 
+
+  </style>
+
+<body>
+  <nav class="navbar navbar-expand-sm " style="background-color:rgb(241, 237, 237);">
+    
+
+    <span style="float: right; color:black; padding: 5px 16px;font-size: xx-large;font-family: 'Times New Roman', Times, serif;">CYNTHIA</span>
+    <!-- Links --> 
+    <ul class="navbar-nav mr-auto" style="color: black;">
+      <li class="nav-item">
+        <a class="nav-link" href="portfolio.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#section2">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#section1">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="cv.pdf" target="_blank">Resume</a>
+      </li>
+    </ul>
+    
+    <form class="form-inline" >
+      <input class="form-control mr-sm-2" type="text" id="searchInput" placeholder="Search">
+      <button class="btn btn-success" type="button" onclick="searchWord()">Search <i class="bi bi-search"></i> </button>
+    
+    </form>
+  </nav>
+
+  <div class="container-fluid" style="background-image: url('Snapchat-534671747.jpg') ;background-position:center center; padding-top: 20%; padding-bottom: 20%;color: rgb(70, 9, 9); text-align: center;" >
+    <h3 style="text-align: center;font-style: oblique;font-size: 44px; font-family: 'Times New Roman', Times, serif;"><u>CYNTHIA SITUMA</u></h3>
+    <div class="typing-animation">
+      <span class="typing-text"></span>
+    </div>
+    
+  <div style="margin-left:auto;margin-right: auto; margin-top: 2%;">
+ <a href="#section1"><button class="btn btn-primary" >About Me</button></a>
+ <a href="#section3" ><button class="btn btn-success">Get In Touch</button></a>
+</div>  
+ 
+ 
+
+   
+ </div>
+</div>
+<script>
+  // JavaScript to control the animation
+  document.addEventListener('DOMContentLoaded', function() {
+      var text = "Juniour Software Developer"; // The word to animate
+      var container = document.querySelector('.typing-text');
+      var index = 0;
+
+      container.style.textAlign = "center";
+    container.style.fontSize = "25px";
+    container.style.fontFamily = "Georgia, 'Times New Roman', Times, serif";
+
+    // Clear the text content of the container
+    container.textContent = '';
+
+      // Function to add next letter
+      function addLetter() {
+          if (index < text.length) {
+              container.textContent += text[index];
+              index++;
+              setTimeout(addLetter, 200); // Adjust speed as needed
+          }
+      }
+
+      // Start the animation
+      addLetter();
+  });
+</script>
+
+        
+<div id="section1" >
+ <div class ="about" style="margin-left: 2%;"><div class="row mt-3">
+
+ <div class="col col-md-4">
+  <img src="2.jpeg" style="width: 80%;height: 8cm;">
+ </div>
+ <div class="col col-md-8">
+  
+  <b><h3><i><u>ABOUT ME</u></i></h3></b>
+  <i><p>I am Cynthia a Kenyan based software developer and a french enthuiast.
+    I build things for the web.My love for technology has grown overtime and i have
+    learnt so many things in the field.I believe that technology is change the world needs.</p></i>
+    <u><h5><i>Skills</i></h5></u>
+    <div class="row">
+      <div class="col col-md-1">
+        <span>C++  </span>
+      </div>
+      <div class="col col-md-11">
+        <div class="progress">
+          <div class="progress-bar" style="width: 70%;">70%</div>
+        </div>
+      </div>
+      <div class="col col-md-1">
+        <span>HTML</span>
+      </div>
+      <div class="col col-md-11">
+        <div class="progress">
+          <div class="progress-bar progress-bar-animated bg-success progress-bar-striped" style="width: 75%;">75%</div>
+        </div>
+      </div>
+        <div class="col col-md-1">
+          <span>CSS</span>
+        </div>
+        <div class="col col-md-11">
+          <div class="progress">
+            <div class="progress-bar" style="width: 90%;">90%</div>
+          </div>
+        </div>
+        <div class="col col-md-2">
+          <span>BOOTSTRAP</span>
+        </div>
+        <div class="col col-md-10">
+          <div class="progress">
+            <div class="progress-bar progress-bar-animated bg-success progress-bar-striped" style="width: 95%;">95%</div>
+          </div>
+        </div>
+        <div class="col col-md-1">
+          <span>PHP</span>
+        </div>
+        <div class="col col-md-11">
+          <div class="progress">
+            <div class="progress-bar" style="width: 90%;">90%</div>
+          </div>
+        </div>
+        <div class="col col-md-1">
+          <span>MySQL</span>
+        </div>
+        <div class="col col-md-11">
+          <div class="progress">
+            <div class="progress-bar progress-bar-animated bg-success progress-bar-striped" style="width: 80%;">80%</div>
+          </div>
+        </div>
+
+    </div>
+  
+ </div>
+</div>
+  
+ </div>
+  
+ </div>
+ <div id="section2" style="margin-top: 20px;">
+ <u><b><h3 style="text-align: center;"><i>Services</i></h3></b></u>
+ <div class="row"> 
+  <div class="col" style="padding-bottom:20px;">
+    <div class="card" style="width:90%">
+      <img class="card-img-top" src="legit coders.jfif" alt="Card image" style="height: 280px;">
+      <div class="card-body">
+        <h4 class="card-title">Web Development</h4>
+        <p class="card-text">I do variety of web design depending on the user requirement</p>
+       
+      </div>
+    </div>
+  </div>
+  <div class="col" style="padding-bottom:20px;">
+    <div class="card" style="width:90%" >
+      <img class="card-img-top" src="web development.jfif" style="height: 280px;">
+      <div class="card-body">
+        <h4 class="card-title">Graphic Design</h4>
+        <p class="card-text">I do variety of web design depending on the user requirement</p>
+       
+      </div>
+    </div>
+  </div>
+  <div class="col" style="padding-bottom:20px;">
+    <div class="card" style="width:90%">
+      <img class="card-img-top" src="content writing.jfif" alt="Card image"style="height: 280px;" >
+      <div class="card-body">
+        <h4 class="card-title">Content Writing</h4>
+        <p class="card-text">I do variety of web design depending on the user requirement</p>
+       
+      </div>
+    </div>
+  </div>
+ </div>
+</div>
+<div id="section3" style="margin-top: 20px; margin-bottom: 20px; padding: 2%;">
+  <i><h3 style="text-align: center;">GET IN TOUCH</h3></i>
+<div class="row">
+  
+  <div class="col col-md-4" style="text-align: center;">
+    
+    <i class="bi bi-telephone-fill text-primary"></i><span> <i> +254796730474</i></span><br>
+    <i class="bi bi-envelope-fill text-primary"></i> <span> <i> situmacynthia52@gmail.com</i></span> <br>
+      <i class="bi bi-geo-alt-fill text-primary"></i> <span> <i> 1014,Kawangware Nairobi-Kenya</i></span><br>
+      <hr>
+      
+      <a href="https://www.instagram.com/cindy_asela?utm_source=qr&igsh=MWd5NXhlaW9wMHBlOA==" target="_blank" class="btn btn-danger "><i class="bi bi-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/cynthia-situma-417a51265" target="_blank" class="btn btn-dark"><i class="bi bi-linkedin"></i></a>
+      <a href="https://www.facebook.com/yourpage" target="_blank" class="btn btn-primary "><i class="bi bi-facebook"></i></a>
+      <a href="https://x.com/situma_cynthia?t=8At1mkMU0AAF67zyLUvJNA&s=09" target="_blank" class="btn btn-info"><i class="bi bi-twitter-x"></i></a>
+    
+
+  </div>
+
+  <div class="col col-md-8">
+    <form action="#" method="">
+      <div class="row" style="margin-bottom: 10px;">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="First name" name="fname">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Last name" name="lname">
+        </div>
+      </div>
+      <div class="form-row md-4" style="margin-bottom: 10px;">
+        <div class="col-12">
+          <input type="text" class="form-control" placeholder="email" name="email">
+        </div>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" id="subject" rows="3" placeholder="subject" name="subject"></textarea>
+      </div>
+      <div class="button" style="float: right;">
+      <button type="submit" class="btn btn-primary">Send</button>
+      </div>
+    </form>
+    </form>
+
+  </div>
+</div>
+ 
+</div>
+
+<div class="container py-2 mt-2 mb-2">  
+    <div class="social-icons" style="text-align: center;">
+      
+    </div>
+</div>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<footer style="text-align: center; background-color:rgb(241, 237, 237); padding: 3%;">
+    &copy; 2024 cynthiasituma. All rights reserved.
+  </footer>
+ 
+  <script>
+    function searchWord() {
+      var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      var textNodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+      var found = false;
+
+      // Remove previous highlights
+      var highlightedElements = document.querySelectorAll('.highlight');
+      highlightedElements.forEach(function(element) {
+        var text = element.textContent;
+        var parent = element.parentNode;
+        parent.replaceChild(document.createTextNode(text), element);
+        parent.normalize();
+      });
+
+      while ((node = textNodes.nextNode())) {
+        var nodeText = node.nodeValue.toLowerCase();
+        var index = nodeText.indexOf(searchTerm);
+        
+        if (index > 0) {
+          found = true;
+          var span = document.createElement('span');
+          var highlightedText = node.splitText(index);
+          highlightedText.splitText(searchTerm.length);
+          var highlightedNode = document.createTextNode(highlightedText.textContent);
+          span.className = 'highlight';
+          span.appendChild(highlightedNode);
+          highlightedText.parentNode.replaceChild(span, highlightedText);
+        }
+      }
+
+      if (!found) {
+        alert('The word "' + searchTerm + '" was not found in the webpage.');
+      }
+    }
+  </script>
+</body>
+</html>
