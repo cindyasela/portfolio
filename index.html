@@ -1,357 +1,653 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>home</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
- <style>
-    .highlight {
-      background-color: rgb(11, 181, 248);
-    }
-   .h3 {
-  background-image: url('c:\Users\Sana\Downloads\5cc8070d65b6d532c4b0c3bbf8662714 (1).jpg');
-} 
-   .footer{
-    text-align: center;
-    color: antiquewhite;
-    position: fixed;
-    bottom: auto;
-   } /* CSS styles for social media icons */
-   .container-fluid{
-    background-image: url('Snapchat-534671747.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-   }
-  
-  .darkerheading{
-    font-weight: bolder;
-    color: black;
-    margin-right: 810px;
-    margin-top: 80px;
-    font-style: italic; 
-    font-size: 25px;
-    font-family: 'Times New Roman', Times, serif;
+    <title>Cynthia's Portfolio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Swiper CSS (included for consistency with your original code, even if not explicitly used) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        /* Custom CSS for overall styling and responsive adjustments */
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter for modern feel */
+            color: #333; /* Default text color */
+            background-color: #f8f9fa; /* Light gray background */
+            /* Add padding-top to the body to prevent content from being hidden by the fixed navbar */
+            padding-top: 56px; /* Adjust based on your navbar's actual height if it changes */
+        }
 
- }
-    .paragraph{
-        font-family: 'Times New Roman', Times, serif;
-        margin-right: 810px;
-        margin-top: 10px;
-        font-size: 20px;
-        color: black;
-        white-space: nowrap;
-    }
-    .getintouch{
-        color: black;
-        margin-right: 810px;
-        margin-top: 10px;
-        background-color: rgb(189, 189, 189);
-    }
-   
-        #typing-animation {
+        /* Highlight class for search functionality */
+        .highlight {
+            background-color: rgb(11, 181, 248);
+        }
+
+        /* General heading styles */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Specific styles for the hero section heading */
+        .hero-heading {
+            font-style: oblique;
+            font-size: 44px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        /* Typing animation container */
+        .typing-animation-container {
             display: inline-block;
             overflow: hidden;
             white-space: nowrap;
-            font-size: 24px; /* Adjust font size as needed */
+            font-size: 24px;
+            position: relative; /* Ensure this is relative for correct positioning of children if needed */
+        }
+
+        /* Typing text content */
+        .typing-text-content {
+            /* Removed position: absolute, top, left to allow it to flow naturally within its container */
+            opacity: 0; /* Hidden initially, JS will set to 1 */
+        }
+
+        /* About Me section card animation */
+        #toggle-card {
+            max-width: 1000px;
+            margin-top: 40px;
+            margin: auto;
+            padding: 40px;
+            background-color: #fff; /* White background for the card */
+            border-radius: 10px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            opacity: 0; /* Hidden initially */
+            transform: translateY(50px); /* Slightly moved down initially */
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        /* Keyframe animation for skill cards */
+        @keyframes spin {
+            0%   { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        /* Styling for rotating skill cards */
+        .skill-card-container {
+            width: 150px;
+            height: 150px;
+            perspective: 1000px;
+            margin: 10px; /* Added margin for spacing */
+        }
+
+        .rotating-card {
+            width: 100%;
+            height: 100%;
             position: relative;
+            transform-style: preserve-3d;
+            animation: spin 4s infinite linear;
         }
-        #typing-text {
+
+        .rotating-card .front,
+        .rotating-card .back {
             position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            border-radius: 8px; /* Added border-radius for aesthetics */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Added shadow */
         }
-    .socialicons{
-        text-align: center;
-    }
- 
 
-  </style>
+        .rotating-card .front img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensure images fit */
+        }
 
+        .rotating-card .back {
+            transform: rotateY(180deg);
+            background: #f0f0f0;
+        }
+
+        /* Styling for service flip cards */
+        .service-card-wrapper {
+            width: 250px;
+            height: 350px;
+            perspective: 1000px;
+            margin: 20px;
+            cursor: pointer; /* Indicate clickable */
+        }
+
+        .service-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .service-card .front,
+        .service-card .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 8px; /* Added border-radius */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Added shadow */
+            overflow: hidden; /* Hide overflow for image */
+        }
+
+        .service-card .front img {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+        }
+
+        .service-card .front .card-content {
+            height: 30%;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .service-card .back {
+            transform: rotateY(180deg);
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Contact Section icons */
+        .contact-info i {
+            margin-right: 8px;
+            font-size: 1.25rem; /* Larger icons */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 767.98px) {
+            .hero-heading {
+                font-size: 36px; /* Smaller font for mobile hero heading */
+            }
+
+            .container-fluid .row {
+                flex-direction: column-reverse; /* Puts image above text on mobile */
+            }
+
+            .container-fluid .text-start {
+                text-align: center !important; /* Center align text on mobile */
+            }
+
+            .container-fluid .col-md-6 {
+                padding-left: 15px !important; /* Reset padding for mobile */
+                padding-right: 15px !important;
+            }
+
+            .skill-card-container, .service-card-wrapper {
+                width: 90%; /* Make cards wider on small screens */
+                max-width: 250px; /* Limit max width for smaller cards */
+                margin: 15px auto; /* Center cards and provide vertical spacing */
+            }
+
+            #section1 {
+                padding-top: 100px; /* Adjust padding for about section on mobile */
+            }
+        }
+    </style>
+</head>
 <body>
-  <nav class="navbar navbar-expand-sm " style="background-color:rgb(241, 237, 237);">
-    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:rgb(169, 169, 180);">
+        <div class="container">
+            <a class="navbar-brand font-weight-bold" href="portfolio.html" style="color: black; font-size: xx-large; font-family: 'Times New Roman', Times, serif;">CYNTHIA</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html" style="color: black;">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section2" style="color: black;">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section1" style="color: black;">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="CV (5).pdf" target="_blank" style="color: black;">Resume</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section4" target="_blank" rel="noopener noreferrer" style="color: black;">Projects</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2 rounded-pill" type="text" id="searchInput" placeholder="Search">
+                    <button class="btn btn-dark my-2 my-sm-0 rounded-pill" type="button" onclick="searchWord()">
+                        Search <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
 
-    <span style="float: right; color:black; padding: 5px 16px;font-size: xx-large;font-family: 'Times New Roman', Times, serif;">CYNTHIA</span>
-    <!-- Links --> 
-    <ul class="navbar-nav mr-auto" style="color: black;">
-      <li class="nav-item">
-        <a class="nav-link" href="portfolio.html">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#section2">Services</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#section1">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="cv.pdf" target="_blank">Resume</a>
-      </li>
-    </ul>
-    
-    <form class="form-inline" >
-      <input class="form-control mr-sm-2" type="text" id="searchInput" placeholder="Search">
-      <button class="btn btn-success" type="button" onclick="searchWord()">Search <i class="bi bi-search"></i> </button>
-    
-    </form>
-  </nav>
+    <div class="container-fluid py-5" style="background-color: rgb(253, 251, 251);">
+        <div class="row align-items-center justify-content-center">
+            <!-- Left Side: Text and Buttons -->
+            <div class="col-12 col-md-6 text-center text-md-left px-4 px-md-5">
+                <h3 class="hero-heading">Hello, I'm Cynthia Situma</h3>
+                <div class="typing-animation-container my-3">
+                    <span class="typing-text-content"></span>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-center justify-content-md-start my-4">
+                    <a href="#section1" class="btn btn-dark mx-2 my-1 rounded-pill">About Me</a>
+                    <a href="#section3" class="btn btn-dark mx-2 my-1 rounded-pill">Get In Touch</a>
+                </div>
+                <a href="CV (5).pdf" download class="btn btn-dark my-2 rounded-pill">
+                    <i class="bi bi-download mr-2"></i>Download Resume
+                </a>
+            </div>
 
-  <div class="container-fluid" style="background-image: url('Snapchat-534671747.jpg') ;background-position:center center; padding-top: 20%; padding-bottom: 20%;color: rgb(70, 9, 9); text-align: center;" >
-    <h3 style="text-align: center;font-style: oblique;font-size: 44px; font-family: 'Times New Roman', Times, serif;"><u>CYNTHIA SITUMA</u></h3>
-    <div class="typing-animation">
-      <span class="typing-text"></span>
+            <!-- Right Side: Circular Image -->
+            <div class="col-12 col-md-6 text-center py-4 py-md-0">
+                <!-- IMPORTANT: If "me.jpeg" is a local file, it needs to be hosted online for the live preview. -->
+                <!-- Otherwise, the 'onerror' fallback will display a placeholder. -->
+                <img src="me.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/450x450/4338CA/E0E7FF?text=Cynthia+Profile';" alt="Cynthia Situma" class="img-fluid rounded-circle" style="width: 300px; height: 300px; object-fit: cover;">
+            </div>
+        </div>
     </div>
-    
-  <div style="margin-left:auto;margin-right: auto; margin-top: 2%;">
- <a href="#section1"><button class="btn btn-primary" >About Me</button></a>
- <a href="#section3" ><button class="btn btn-success">Get In Touch</button></a>
-</div>  
- 
- 
 
-   
- </div>
-</div>
-<script>
-  // JavaScript to control the animation
-  document.addEventListener('DOMContentLoaded', function() {
-      var text = "Juniour Software Developer"; // The word to animate
-      var container = document.querySelector('.typing-text');
-      var index = 0;
+    <!-- JavaScript for Typing Animation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var text = "Junior Software Developer"; // The word to animate
+            var container = document.querySelector('.typing-text-content');
+            var index = 0;
 
-      container.style.textAlign = "center";
-    container.style.fontSize = "25px";
-    container.style.fontFamily = "Georgia, 'Times New Roman', Times, serif";
+            container.style.fontSize = "25px";
+            container.style.fontFamily = "Georgia, 'Times New Roman', Times, serif";
+            container.textContent = ''; // Clear existing content
+            container.style.opacity = '1'; // Ensure the element is visible
 
-    // Clear the text content of the container
-    container.textContent = '';
+            function addLetter() {
+                if (index < text.length) {
+                    container.textContent += text[index];
+                    index++;
+                    setTimeout(addLetter, 100); // Adjust speed as needed
+                }
+            }
+            addLetter(); // Start the animation
+        });
+    </script>
 
-      // Function to add next letter
-      function addLetter() {
-          if (index < text.length) {
-              container.textContent += text[index];
-              index++;
-              setTimeout(addLetter, 200); // Adjust speed as needed
-          }
-      }
-
-      // Start the animation
-      addLetter();
-  });
-</script>
-
-        
-<div id="section1" >
- <div class ="about" style="margin-left: 2%;"><div class="row mt-3">
-
- <div class="col col-md-4">
-  <img src="2.jpeg" style="width: 80%;height: 8cm;">
- </div>
- <div class="col col-md-8">
-  
-  <b><h3><i><u>ABOUT ME</u></i></h3></b>
-  <i><p>I am Cynthia a Kenyan based software developer and a french enthuiast.
-    I build things for the web.My love for technology has grown overtime and i have
-    learnt so many things in the field.I believe that technology is change the world needs.</p></i>
-    <u><h5><i>Skills</i></h5></u>
-    <div class="row">
-      <div class="col col-md-1">
-        <span>C++  </span>
-      </div>
-      <div class="col col-md-11">
-        <div class="progress">
-          <div class="progress-bar" style="width: 70%;">70%</div>
-        </div>
-      </div>
-      <div class="col col-md-1">
-        <span>HTML</span>
-      </div>
-      <div class="col col-md-11">
-        <div class="progress">
-          <div class="progress-bar progress-bar-animated bg-success progress-bar-striped" style="width: 75%;">75%</div>
-        </div>
-      </div>
-        <div class="col col-md-1">
-          <span>CSS</span>
-        </div>
-        <div class="col col-md-11">
-          <div class="progress">
-            <div class="progress-bar" style="width: 90%;">90%</div>
-          </div>
-        </div>
-        <div class="col col-md-2">
-          <span>BOOTSTRAP</span>
-        </div>
-        <div class="col col-md-10">
-          <div class="progress">
-            <div class="progress-bar progress-bar-animated bg-success progress-bar-striped" style="width: 95%;">95%</div>
-          </div>
-        </div>
-        <div class="col col-md-1">
-          <span>PHP</span>
-        </div>
-        <div class="col col-md-11">
-          <div class="progress">
-            <div class="progress-bar" style="width: 90%;">90%</div>
-          </div>
-        </div>
-        <div class="col col-md-1">
-          <span>MySQL</span>
-        </div>
-        <div class="col col-md-11">
-          <div class="progress">
-            <div class="progress-bar progress-bar-animated bg-success progress-bar-striped" style="width: 80%;">80%</div>
-          </div>
-        </div>
-
+    <!-- About Me Section -->
+    <div id="section1" class="py-5">
+        <section class="container">
+            <div id="toggle-card" class="bg-white p-5 rounded shadow-lg">
+                <h3 class="mb-4 text-center">About me</h3>
+                <p class="lead mb-4">
+                    I'm a dedicated and passionate <strong>Software Developer</strong> with a strong focus on creating functional, user-friendly, and aesthetically pleasing websites and applications. Over the years, I’ve honed my skills in front-end and back-end development, and I’m always looking to expand my toolkit to meet new challenges.
+                </p>
+                <p class="lead">
+                    I’m fluent in <strong>English</strong>, <strong>French</strong>, and <strong>Kiswahili</strong>, which allows me to communicate effectively with diverse clients and collaborate with teams across different regions. I believe language is a powerful tool in both coding and communication, and I use this advantage to deliver better, more tailored digital solutions.
+                </p>
+            </div>
+        </section>
     </div>
-  
- </div>
-</div>
-  
- </div>
-  
- </div>
- <div id="section2" style="margin-top: 20px;">
- <u><b><h3 style="text-align: center;"><i>Services</i></h3></b></u>
- <div class="row"> 
-  <div class="col" style="padding-bottom:20px;">
-    <div class="card" style="width:90%">
-      <img class="card-img-top" src="legit coders.jfif" alt="Card image" style="height: 280px;">
-      <div class="card-body">
-        <h4 class="card-title">Web Development</h4>
-        <p class="card-text">I do variety of web design depending on the user requirement</p>
-       
-      </div>
-    </div>
-  </div>
-  <div class="col" style="padding-bottom:20px;">
-    <div class="card" style="width:90%" >
-      <img class="card-img-top" src="web development.jfif" style="height: 280px;">
-      <div class="card-body">
-        <h4 class="card-title">Graphic Design</h4>
-        <p class="card-text">I do variety of web design depending on the user requirement</p>
-       
-      </div>
-    </div>
-  </div>
-  <div class="col" style="padding-bottom:20px;">
-    <div class="card" style="width:90%">
-      <img class="card-img-top" src="content writing.jfif" alt="Card image"style="height: 280px;" >
-      <div class="card-body">
-        <h4 class="card-title">Content Writing</h4>
-        <p class="card-text">I do variety of web design depending on the user requirement</p>
-       
-      </div>
-    </div>
-  </div>
- </div>
-</div>
-<div id="section3" style="margin-top: 20px; margin-bottom: 20px; padding: 2%;">
-  <i><h3 style="text-align: center;">GET IN TOUCH</h3></i>
-<div class="row">
-  
-  <div class="col col-md-4" style="text-align: center;">
-    
-    <i class="bi bi-telephone-fill text-primary"></i><span> <i> +254796730474</i></span><br>
-    <i class="bi bi-envelope-fill text-primary"></i> <span> <i> situmacynthia52@gmail.com</i></span> <br>
-      <i class="bi bi-geo-alt-fill text-primary"></i> <span> <i> 1014,Kawangware Nairobi-Kenya</i></span><br>
-      <hr>
-      
-      <a href="https://www.instagram.com/cindy_asela?utm_source=qr&igsh=MWd5NXhlaW9wMHBlOA==" target="_blank" class="btn btn-danger "><i class="bi bi-instagram"></i></a>
-      <a href="https://www.linkedin.com/in/cynthia-situma-417a51265" target="_blank" class="btn btn-dark"><i class="bi bi-linkedin"></i></a>
-      <a href="https://www.facebook.com/yourpage" target="_blank" class="btn btn-primary "><i class="bi bi-facebook"></i></a>
-      <a href="https://x.com/situma_cynthia?t=8At1mkMU0AAF67zyLUvJNA&s=09" target="_blank" class="btn btn-info"><i class="bi bi-twitter-x"></i></a>
-    
 
-  </div>
+    <!-- JavaScript for About Me card animation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.getElementById('toggle-card');
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(50px)';
+                    }
+                },
+                { threshold: 0.5 } // 50% of the card must be visible
+            );
+            observer.observe(card);
+        });
+    </script>
 
-  <div class="col col-md-8">
-    <form action="#" method="">
-      <div class="row" style="margin-bottom: 10px;">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="First name" name="fname">
+    <!-- Tech Skills Section -->
+    <h3 class="text-center my-5">Tech skills</h3>
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Skill Card 1 -->
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 skill-card-container">
+                <div class="rotating-card">
+                    <!-- IMPORTANT: If "react.jpg" is a local file, it needs to be hosted online. -->
+                    <div class="front">
+                        <img src="react.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/DBEAFE/1E40AF?text=React+Skill';" alt="React">
+                    </div>
+                    <div class="back">React.js</div>
+                </div>
+            </div>
+
+            <!-- Skill Card 2 -->
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 skill-card-container">
+                <div class="rotating-card">
+                    <!-- IMPORTANT: If "Javascript.jpg" is a local file, it needs to be hosted online. -->
+                    <div class="front">
+                        <img src="Javascript.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/DBEAFE/1E40AF?text=JS+Skill';" alt="JavaScript">
+                    </div>
+                    <div class="back">JavaScript</div>
+                </div>
+            </div>
+
+            <!-- Skill Card 3 -->
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 skill-card-container">
+                <div class="rotating-card">
+                    <!-- IMPORTANT: If "python.jpg" is a local file, it needs to be hosted online. -->
+                    <div class="front">
+                        <img src="python.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/DBEAFE/1E40AF?text=Python+Skill';" alt="Python">
+                    </div>
+                    <div class="back">Python</div>
+                </div>
+            </div>
+
+            <!-- Skill Card 4 -->
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 skill-card-container">
+                <div class="rotating-card">
+                    <!-- IMPORTANT: If "laravel.jpg" is a local file, it needs to be hosted online. -->
+                    <div class="front">
+                        <img src="laravel.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/DBEAFE/1E40AF?text=Laravel+Skill';" alt="Laravel">
+                    </div>
+                    <div class="back">Laravel</div>
+                </div>
+            </div>
+
+            <!-- Skill Card 5 -->
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 skill-card-container">
+                <div class="rotating-card">
+                    <!-- IMPORTANT: If "sql.jpg" is a local file, it needs to be hosted online. -->
+                    <div class="front">
+                        <img src="sql.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/DBEAFE/1E40AF?text=MySQL+Skill';" alt="MySQL">
+                    </div>
+                    <div class="back">My SQL</div>
+                </div>
+            </div>
+
+            <!-- Skill Card 6 -->
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2 skill-card-container">
+                <div class="rotating-card">
+                    <!-- IMPORTANT: If "node.jpg" is a local file, it needs to be hosted online. -->
+                    <div class="front">
+                        <img src="node.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/DBEAFE/1E40AF?text=Node.js+Skill';" alt="Node.js">
+                    </div>
+                    <div class="back">Node.js</div>
+                </div>
+            </div>
         </div>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Last name" name="lname">
-        </div>
-      </div>
-      <div class="form-row md-4" style="margin-bottom: 10px;">
-        <div class="col-12">
-          <input type="text" class="form-control" placeholder="email" name="email">
-        </div>
-      </div>
-      <div class="form-group">
-        <textarea class="form-control" id="subject" rows="3" placeholder="subject" name="subject"></textarea>
-      </div>
-      <div class="button" style="float: right;">
-      <button type="submit" class="btn btn-primary">Send</button>
-      </div>
-    </form>
-    </form>
-
-  </div>
-</div>
- 
-</div>
-
-<div class="container py-2 mt-2 mb-2">  
-    <div class="social-icons" style="text-align: center;">
-      
     </div>
-</div>
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<footer style="text-align: center; background-color:rgb(241, 237, 237); padding: 3%;">
-    &copy; 2024 cynthiasituma. All rights reserved.
-  </footer>
- 
-  <script>
-    function searchWord() {
-      var searchTerm = document.getElementById('searchInput').value.toLowerCase();
-      var textNodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-      var found = false;
+    <!-- Services Section -->
+    <div id="section2" class="py-5 bg-light">
+        <h3 class="text-center mb-5">Services</h3>
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Service Card 1 -->
+                <div class="col-12 col-md-6 col-lg-3 service-card-wrapper" onclick="this.children[0].style.transform = this.children[0].style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)'">
+                    <div class="service-card">
+                        <!-- Front -->
+                        <div class="front">
+                            <!-- IMPORTANT: If "front.jpg" is a local file, it needs to be hosted online. -->
+                            <img src="front.jpg" onerror="this.onerror=null;this.src='https://placehold.co/250x175/DBEAFE/1E40AF?text=Web+Development';" alt="Web Dev">
+                            <div class="card-content">
+                                <h4 class="mb-2">Web Development</h4>
+                                <button class="btn btn-dark rounded-pill">Learn More</button>
+                            </div>
+                        </div>
+                        <!-- Back -->
+                        <div class="back">
+                            <p class="mb-0">Creating responsive & modern websites tailored to your needs. I specialize in building modern, responsive, and user-friendly websites tailored to client needs.</p>
+                        </div>
+                    </div>
+                </div>
 
-      // Remove previous highlights
-      var highlightedElements = document.querySelectorAll('.highlight');
-      highlightedElements.forEach(function(element) {
-        var text = element.textContent;
-        var parent = element.parentNode;
-        parent.replaceChild(document.createTextNode(text), element);
-        parent.normalize();
-      });
+                <!-- Service Card 2 -->
+                <div class="col-12 col-md-6 col-lg-3 service-card-wrapper" onclick="this.children[0].style.transform = this.children[0].style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)'">
+                    <div class="service-card">
+                        <div class="front">
+                            <!-- IMPORTANT: If "graphic.jpg" is a local file, it needs to be hosted online. -->
+                            <img src="graphic.jpg" onerror="this.onerror=null;this.src='https://placehold.co/250x175/DBEAFE/1E40AF?text=Graphic+Design';" alt="Graphic Design">
+                            <div class="card-content">
+                                <h4 class="mb-2">Graphic Design</h4>
+                                <button class="btn btn-dark rounded-pill">Learn More</button>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <p class="mb-0">Designing engaging visuals and branding materials. From logos and branding to social media visuals and marketing materials, I bring creativity and consistency to every project.</p>
+                        </div>
+                    </div>
+                </div>
 
-      while ((node = textNodes.nextNode())) {
-        var nodeText = node.nodeValue.toLowerCase();
-        var index = nodeText.indexOf(searchTerm);
-        
-        if (index > 0) {
-          found = true;
-          var span = document.createElement('span');
-          var highlightedText = node.splitText(index);
-          highlightedText.splitText(searchTerm.length);
-          var highlightedNode = document.createTextNode(highlightedText.textContent);
-          span.className = 'highlight';
-          span.appendChild(highlightedNode);
-          highlightedText.parentNode.replaceChild(span, highlightedText);
+                <!-- Service Card 3 -->
+                <div class="col-12 col-md-6 col-lg-3 service-card-wrapper" onclick="this.children[0].style.transform = this.children[0].style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)'">
+                    <div class="service-card">
+                        <div class="front">
+                            <!-- IMPORTANT: If "SQL 1.jpg" is a local file, it needs to be hosted online. -->
+                            <img src="SQL 1.jpg" onerror="this.onerror=null;this.src='https://placehold.co/250x175/DBEAFE/1E40AF?text=Backend+Development';" alt="Backend Development">
+                            <div class="card-content">
+                                <h4 class="mb-2">Backend</h4>
+                                <button class="btn btn-dark rounded-pill">Learn More</button>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <p class="mb-0">Crafting compelling copy to tell your story effectively. From designing APIs and managing databases to ensuring security and performance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="col-12 col-md-6 col-lg-3 service-card-wrapper" onclick="this.children[0].style.transform = this.children[0].style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)'">
+                    <div class="service-card">
+                        <div class="front">
+                            <!-- IMPORTANT: If "UI_UX logo.jpg" is a local file, it needs to be hosted online. -->
+                            <img src="UI_UX logo.jpg" onerror="this.onerror=null;this.src='https://placehold.co/250x175/DBEAFE/1E40AF?text=Data+Analysis+Service';" alt="Data Analysis">
+                            <div class="card-content">
+                                <h4 class="mb-2">Data Analysis</h4>
+                                <button class="btn btn-dark rounded-pill">Learn More</button>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <p class="mb-0">Analyzing data to uncover insights and support decisions. Help drive informed decision-making and uncover opportunities for improvement across various domains.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Projects Section -->
+    <div id="section4" class="py-5 bg-white">
+        <h3 class="text-center mb-5"><i>Recent Projects</i></h3>
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Project 1 Card -->
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm rounded">
+                        <!-- IMPORTANT: If "homepage.PNG" is a local file, it needs to be hosted online. -->
+                        <img src="homepage.PNG" onerror="this.onerror=null;this.src='https://placehold.co/600x400/DBEAFE/1E40AF?text=Project+1+Thumbnail';" class="card-img-top" alt="Project 1 Screenshot">
+                        <div class="card-body">
+                            <h5 class="card-title">Car Price Prediction</h5>
+                            <p class="card-text">A machine learning-powered React app that predicts the price of second-hand cars using user input and trained data models.</p>
+                            <a href="https://github.com/Irenegathoni/PRECCOG_ML_SYSTEM.git" target="_blank" class="btn btn-primary rounded-pill">View Project</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 Card -->
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm rounded">
+                        <!-- IMPORTANT: If "project2-thumbnail.jpg" is a local file, it needs to be hosted online. -->
+                        <img src="hs.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/DBEAFE/1E40AF?text=Project+2+Thumbnail';" class="card-img-top" alt="Project 2 Screenshot">
+                        <div class="card-body">
+                            <h5 class="card-title">patient management system</h5>
+                            <p class="card-text">A React-based system that handles patient record of diagnosis medication and admission.</p>
+                            <a href="https://github.com/cindyasela/Data-visualization-santander-case.git" target="_blank" class="btn btn-success rounded-pill">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Get In Touch Section -->
+    <div id="section3" class="py-5 bg-light">
+        <h3 class="text-center mb-5"><i>GET IN TOUCH</i></h3>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-4 text-center contact-info mb-4 mb-md-0">
+                    <p><i class="bi bi-telephone-fill text-primary"></i> <i>+254796730474</i></p>
+                    <p><i class="bi bi-envelope-fill text-primary"></i> <i>situmacynthia52@gmail.com</i></p>
+                    <p><i class="bi bi-geo-alt-fill text-primary"></i> <i>1014,Kawangware Nairobi-Kenya</i></p>
+                    <hr class="my-4">
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/cindy_asela?utm_source=qr&igsh=MWd5NXhlaW9wMHblOA==" target="_blank" class="btn btn-danger mx-1 rounded-circle"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/cynthia-situma-417a51265" target="_blank" class="btn btn-dark mx-1 rounded-circle"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://www.facebook.com/yourpage" target="_blank" class="btn btn-primary mx-1 rounded-circle"><i class="bi bi-facebook"></i></a>
+                        <a href="https://x.com/situma_cynthia?t=8At1mkMU0AAF67zyLUvJNA&s=09" target="_blank" class="btn btn-info mx-1 rounded-circle"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-8">
+                    <form action="#" method="POST" class="p-4 border rounded shadow-sm bg-white">
+                        <div class="form-row mb-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control rounded-pill" placeholder="First name" name="fname" required>
+                            </div>
+                            <div class="col-md-6 mt-3 mt-md-0">
+                                <input type="text" class="form-control rounded-pill" placeholder="Last name" name="lname" required>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="email" class="form-control rounded-pill" placeholder="Email" name="email" required>
+                        </div>
+                        <div class="form-group mb-4">
+                            <textarea class="form-control rounded" id="subject" rows="5" placeholder="Subject" name="subject" required></textarea>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary rounded-pill">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-4" style="background-color:rgb(241, 237, 237);">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 cynthiasituma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS, Popper.js, jQuery (Order matters!) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS (if you intend to use it) -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- JavaScript for Search Functionality -->
+    <script>
+        function searchWord() {
+            var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            var textNodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+            var found = false;
+
+            // Remove previous highlights
+            var highlightedElements = document.querySelectorAll('.highlight');
+            highlightedElements.forEach(function(element) {
+                var text = element.textContent;
+                var parent = element.parentNode;
+                parent.replaceChild(document.createTextNode(text), element);
+                parent.normalize();
+            });
+
+            if (searchTerm === '') { // If search term is empty, just remove highlights and return
+                // Using a custom modal/message box instead of alert
+                showInfoMessage('Please enter a word to search.');
+                return;
+            }
+
+            let firstMatchElement = null; // To scroll to the first match
+
+            // Reset the tree walker to ensure it starts from the beginning after DOM modifications
+            textNodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+
+            while ((node = textNodes.nextNode())) {
+                var nodeText = node.nodeValue.toLowerCase();
+                var index = nodeText.indexOf(searchTerm);
+
+                if (index !== -1) { // Check if index is not -1
+                    found = true;
+                    var span = document.createElement('span');
+                    span.className = 'highlight';
+
+                    // Use splitText to create three new text nodes: before, highlighted, and after
+                    var originalNode = node; // Keep reference to the original node
+                    var afterTextNode = originalNode.splitText(index + searchTerm.length); // Splits originalNode, afterTextNode gets the rest
+                    var highlightedTextNode = originalNode.splitText(index); // Splits originalNode again, highlightedTextNode gets the search term part
+
+                    span.appendChild(highlightedTextNode); // Add the highlighted text to the span
+                    originalNode.parentNode.insertBefore(span, afterTextNode); // Insert the span before the 'after' text node
+
+                    if (!firstMatchElement) {
+                        firstMatchElement = span; // Store the first highlighted element
+                    }
+                }
+            }
+
+            if (found) {
+                // Scroll to the first found element
+                if (firstMatchElement) {
+                    firstMatchElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            } else {
+                // Using a custom modal/message box instead of alert
+                showInfoMessage('The word "' + searchTerm + '" was not found in the webpage.');
+            }
         }
-      }
 
-      if (!found) {
-        alert('The word "' + searchTerm + '" was not found in the webpage.');
-      }
-    }
-  </script>
+        // Custom function to show a message instead of alert()
+        function showInfoMessage(message) {
+            // This is a basic example. For a real app, you'd create a modal or toast.
+            const messageBox = document.createElement('div');
+            messageBox.style.position = 'fixed';
+            messageBox.style.bottom = '20px';
+            messageBox.style.left = '50%';
+            messageBox.style.transform = 'translateX(-50%)';
+            messageBox.style.backgroundColor = '#333';
+            messageBox.style.color = 'white';
+            messageBox.style.padding = '10px 20px';
+            messageBox.style.borderRadius = '5px';
+            messageBox.style.zIndex = '1000';
+            messageBox.textContent = message;
+            document.body.appendChild(messageBox);
+
+            setTimeout(() => {
+                messageBox.remove();
+            }, 3000); // Remove message after 3 seconds
+        }
+    </script>
 </body>
 </html>

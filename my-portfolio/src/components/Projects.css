@@ -1,0 +1,25 @@
+/* src/components/Projects.css */
+
+.projects-section {
+  margin-top: 40px;
+  padding: 40px;
+  background-color: #f8f9fa;
+}
+
+.projects-title {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
